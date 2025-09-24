@@ -11,7 +11,8 @@ public class SalaryInfo {
     private static final int HOURS_IDX = 2;
     private static final int RATE_IDX = 3;
 
-    public String getSalaryInfo(String[] names, String[] data, String dateFrom, String dateTo) {
+    public String getSalaryInfo(String[] names, String[] data, String dateFrom,
+                                String dateTo) {
         LocalDate from = LocalDate.parse(dateFrom, DATE_FORMATTER);
         LocalDate to = LocalDate.parse(dateTo, DATE_FORMATTER);
 
@@ -25,6 +26,7 @@ public class SalaryInfo {
             int hours = Integer.parseInt(tokens[HOURS_IDX]);
             int rate = Integer.parseInt(tokens[RATE_IDX]);
 
+            // Перевірка, чи дата в заданому проміжку включно
             if (!workDate.isBefore(from) && !workDate.isAfter(to)) {
                 int dailySalary = hours * rate;
                 for (int i = 0; i < names.length; i++) {
@@ -48,4 +50,5 @@ public class SalaryInfo {
         return report.toString().trim();
     }
 }
+
 
